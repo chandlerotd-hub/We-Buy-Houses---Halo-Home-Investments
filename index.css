@@ -21,6 +21,8 @@
         transform: translateY(0);
       }
     }
+    /* leave space for fixed header on small screens */
+    body { padding-top:72px; }
 
     header {
       background:white;
@@ -29,9 +31,11 @@
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; justify-content:space-between; align-items:center;
       animation: floatIn 0.8s ease-out;
+      height:72px;
     }
     .logo { height:65px; }
     nav { display:flex; gap:2rem; align-items:center; }
+    .nav-toggle { display:none; background:none; border:none; font-size:1.5rem; }
     nav a { color:var(--text); text-decoration:none; font-weight:600; transition:0.3s; }
     nav a:hover { color:var(--darkblue); }
     .nav-btn { background:#ff6b6b; color:white !important; padding:0.8rem 1.8rem; border-radius:25px; }
@@ -40,7 +44,7 @@
     .hero {
       background: linear-gradient(135deg, #c0efff, var(--blue));
       text-align:center;
-      padding:14rem 1rem 8rem;
+      padding:10rem 1rem 6rem;
       color:var(--text);
       animation: floatIn 1s ease-out;
     }
@@ -107,10 +111,22 @@
     }
 
     @media (max-width:768px) {
-      .hero h1 { font-size:2.4rem; }
-      .hero p { font-size:1.2rem; }
-      .seller-form h2 { font-size:2rem; }
-      header { padding:1rem; }
+      /* reduce header height/padding and enable mobile nav */
+      body { padding-top:64px; }
+      header { padding:0.75rem 1rem; height:64px; }
+      .nav-toggle { display:block; }
+      /* mobile nav dropdown */
+      nav { display:none; position:absolute; top:64px; right:1rem; background:white; flex-direction:column; gap:0.6rem; padding:0.8rem; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.08); }
+      nav.open { display:flex; }
+
+      /* smaller hero spacing */
+      .hero { padding:8rem 1rem 4rem; }
+      .hero h1 { font-size:2.2rem; }
+      .hero p { font-size:1.1rem; }
+      .seller-form h2 { font-size:1.6rem; }
+      .big-btn { padding:1rem 2rem; font-size:1.1rem; }
+      .benefit h3 { font-size:1.25rem; }
+      .form-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -118,6 +134,7 @@
 
   <header>
     <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
     <nav>
       <a href="#how-it-works">How It Works</a>
       <a href="#contact-us">Contact Us</a>
@@ -132,7 +149,7 @@
       <p style="font-size:1.4rem; margin-bottom:2rem;">Any Condition • Cash • Close on Your Time</p>
       <p>No repairs. No agents. No fees. We handle everything.</p>
       <a href="#form" class="big-btn">Get Your Cash Offer </a>
-      <p style="margin-top:2rem; font-size:1.3rem; font-weight:700;"> (951) 399-8250</p>
+      <p style="margin-top:2rem; font-size:1.3rem; font-weight:700;"> (951) 293-0353</p>
     </div>
   </section>
 
@@ -187,7 +204,7 @@
     <div class="container">
       <h2 style="font-size:2.8rem; margin-bottom:2rem;">Get in Touch</h2>
       <p style="font-size:1.3rem; margin-bottom:2rem;">Have questions? We're here to help.</p>
-      <p style="font-size:1.6rem; font-weight:700; color:var(--darkblue);">📞 Call or Text: (951) 399-8250</p>
+      <p style="font-size:1.6rem; font-weight:700; color:var(--darkblue);">📞 Call or Text: (951) 293-0353</p>
       <p style="font-size:1.2rem; margin-top:1.5rem;">Available 24/7 • We answer all calls</p>
     </div>
   </section>
@@ -221,9 +238,32 @@
 
   <footer>
     <p><strong>We Buy Houses in Riverside County & Surrounding Areas</strong></p>
-    <p style="margin-top:1rem;">Call Anytime: (951) 399-8250 | 24/7 Support</p>
+    <p style="margin-top:1rem;">Call Anytime: (951) 293-0353 | 24/7 Support</p>
     <p style="margin-top:1rem; opacity:0.7;"> 2025 Halo Home Investments  Licensed & Insured</p>
   </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('header nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        nav.classList.toggle('open');
+      });
+      // close nav when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!nav.classList.contains('open')) return;
+        if (e.target === btn) return;
+        if (!nav.contains(e.target)) {
+          nav.classList.remove('open');
+        }
+      });
+      // close nav when clicking a link (helpful on mobile)
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+    });
+  </script>
 
 </body>
 </html>
