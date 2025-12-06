@@ -7,9 +7,20 @@
   <meta name="description" content="Sell your house fast in Riverside County. Any condition, cash offer in 24 hrs. No fees, no repairs.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root { --blue: #a8e6ff; --darkblue: #6bc8ff; --text: #1e1e1e; }
+    :root {
+      --blue: #a8e6ff;
+      --darkblue: #6bc8ff;
+      --text: #1e1e1e;
+      --bg: #f0fbff;
+      --card-bg: #ffffff;
+      --header-bg: #ffffff;
+      --btn-bg: #ff6b6b;
+      --btn-bg-hover: #e55555;
+      --footer-bg: #1e1e1e;
+      --footer-text: #ffffff;
+    }
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #f0fbff; color:var(--text); line-height:1.6; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color:var(--text); line-height:1.6; }
 
     @keyframes floatIn {
       from {
@@ -25,7 +36,7 @@
     body { padding-top:72px; }
 
     header {
-      background:white;
+      background:var(--header-bg);
       padding:1rem 2rem;
       box-shadow:0 4px 20px rgba(0,0,0,0.1);
       position:fixed; top:0; left:0; right:0; z-index:1000;
@@ -34,15 +45,18 @@
       height:72px;
     }
     .logo { height:65px; }
+    /* Logo image */
+    .logo-img { height:44px; width:auto; display:inline-block; vertical-align:middle; }
+    .site-title { font-size:1.05rem; font-weight:700; color:var(--darkblue); margin-left:0.6rem; vertical-align:middle; }
     nav { display:flex; gap:2rem; align-items:center; }
     .nav-toggle { display:none; background:none; border:none; font-size:1.5rem; }
     nav a { color:var(--text); text-decoration:none; font-weight:600; transition:0.3s; }
     nav a:hover { color:var(--darkblue); }
-    .nav-btn { background:#ff6b6b; color:white !important; padding:0.8rem 1.8rem; border-radius:25px; }
-    .nav-btn:hover { background:#e55555; }
+    .nav-btn { background:var(--btn-bg); color:white !important; padding:0.8rem 1.8rem; border-radius:25px; }
+    .nav-btn:hover { background:var(--btn-bg-hover); }
 
     .hero {
-      background: linear-gradient(135deg, #c0efff, var(--blue));
+      background: linear-gradient(135deg, #a8e6ff, #6bc8ff);
       text-align:center;
       padding:10rem 1rem 6rem;
       color:var(--text);
@@ -55,20 +69,25 @@
     }
     .hero p { font-size:1.6rem; max-width:900px; margin:0 auto 2rem; animation: floatIn 1.4s ease-out; }
     .big-btn {
-      background:#ff6b6b; color:white; padding:1.6rem 4rem; font-size:1.7rem;
+      background:var(--btn-bg); color:white; padding:1.6rem 4rem; font-size:1.7rem;
       border-radius:50px; text-decoration:none; font-weight:700; box-shadow:0 10px 30px rgba(255,107,107,0.4);
       display:inline-block; transition:0.3s;
     }
-    .big-btn:hover { transform:scale(1.05); }
+    .big-btn:hover { transform:scale(1.05); background:var(--btn-bg-hover); }
 
     .section { padding:6rem 1rem; text-align:center; animation: floatIn 1s ease-out; }
+    .section:nth-child(2) { background: #ffffff; }
+    .section:nth-child(3) { background: #f0f9ff; }
+    .section:nth-child(4) { background: linear-gradient(135deg, #a8e6ff, #6bc8ff); }
+    .section:nth-child(5) { background: #f5f5f5; }
+    .section:nth-child(6) { background: linear-gradient(135deg, #a8e6ff, #6bc8ff); }
     .benefits {
       display:grid;
       grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
       gap:3rem; margin-top:3rem;
     }
     .benefit { 
-      background:white; padding:3rem 2rem; border-radius:16px;
+      background:var(--card-bg); padding:3rem 2rem; border-radius:16px;
       box-shadow:0 8px 25px rgba(0,0,0,0.08);
       animation: floatIn 1.2s ease-out;
     }
@@ -80,7 +99,7 @@
     .container { max-width:1100px; margin:0 auto; padding:0 1rem; }
 
     .seller-form {
-      background: linear-gradient(135deg, var(--blue), #b3e0ff);
+      background: linear-gradient(135deg, var(--form-top), var(--form-bottom));
       padding:5rem 2rem; border-radius:20px; margin:4rem auto;
       max-width:900px;
       animation: floatIn 1.4s ease-out;
@@ -106,7 +125,7 @@
     .submit-btn:hover { transform:scale(1.02); }
 
     footer {
-      background:#1e1e1e; color:white; text-align:center;
+      background:var(--footer-bg); color:var(--footer-text); text-align:center;
       padding:3rem 1rem; font-size:1.1rem;
     }
 
@@ -133,8 +152,15 @@
 <body>
 
   <header>
-    <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
-    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <a href="#" style="display:flex; align-items:center; text-decoration:none;">
+      <img src="file:///C:/Users/Chand/Desktop/my%20site%20realestate/assets/logo.jpg" alt="Halo Home Investments" class="logo-img">
+      <span class="site-title">Halo Home Investments</span>
+    </a>
+
+    <div style="display:flex; align-items:center; gap:0.4rem;">
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+
     <nav>
       <a href="#how-it-works">How It Works</a>
       <a href="#contact-us">Contact Us</a>
@@ -243,25 +269,26 @@
   </footer>
 
   <script>
-    // Mobile nav toggle
     document.addEventListener('DOMContentLoaded', function () {
+      // Mobile nav toggle
       const btn = document.querySelector('.nav-toggle');
       const nav = document.querySelector('header nav');
-      if (!btn || !nav) return;
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        nav.classList.toggle('open');
-      });
-      // close nav when clicking outside
-      document.addEventListener('click', function (e) {
-        if (!nav.classList.contains('open')) return;
-        if (e.target === btn) return;
-        if (!nav.contains(e.target)) {
-          nav.classList.remove('open');
-        }
-      });
-      // close nav when clicking a link (helpful on mobile)
-      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+      if (btn && nav) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          nav.classList.toggle('open');
+        });
+        // close nav when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!nav.classList.contains('open')) return;
+          if (e.target === btn) return;
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('open');
+          }
+        });
+        // close nav when clicking a link (helpful on mobile)
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+      }
     });
   </script>
 
