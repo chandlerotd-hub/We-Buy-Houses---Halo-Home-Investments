@@ -55,6 +55,9 @@
       animation: floatIn 0.8s ease-out;
     }
 
+    /* keep space for fixed header */
+    body { padding-top: 72px; }
+
     .logo {
       height: 65px;
     }
@@ -63,7 +66,19 @@
       display: flex;
       gap: 2rem;
       align-items: center;
+      margin-left: auto; /* keep desktop nav on the right */
     }
+
+    .nav-toggle {
+      display: none !important; /* hidden on desktop */
+      background: transparent;
+      border: none;
+      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:1.25rem; cursor:pointer; transition: transform 180ms ease, background-color 180ms ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-toggle:hover { background: rgba(11,78,126,0.05); transform: scale(1.03); }
+    .nav-toggle.open { transform: rotate(90deg); }
 
     nav a {
       color: var(--text);
@@ -242,8 +257,19 @@
       }
 
       header {
-        padding: 1rem;
+        padding: 0.75rem 1rem;
       }
+
+      /* show hamburger and collapse nav */
+      .nav-toggle { display: inline-flex !important; }
+      nav { display: none; position: absolute; top: 64px; right: 1rem; background: white; flex-direction: column; gap: 0.6rem; padding: 0.8rem; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); width: calc(100% - 2rem); left: 1rem; }
+      nav.open { display: flex; }
+
+      .hero { padding: 8rem 1rem 4rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.1rem; }
+      .big-btn { padding: 1rem 2rem; font-size: 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -251,7 +277,10 @@
 <body>
 
   <header>
-    <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
+    <a href="#" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
+      <h2 style="color:var(--darkblue); font-size:1.4rem; margin:0;">Halo Home Investments</h2>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span aria-hidden="true">☰</span></button>
     <nav>
       <a href="#how-it-works">How It Works</a>
       <a href="#contact-us">Contact Us</a>
@@ -358,6 +387,29 @@
     <p style="margin-top:1rem;">Call Anytime: 9512930353 | 24/7 Support</p>
     <p style="margin-top:1rem; opacity:0.7;"> 2025 Halo Home Investments Licensed & Insured</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('header nav');
+      if (btn && nav) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          nav.classList.toggle('open');
+          btn.classList.toggle('open');
+        });
+        document.addEventListener('click', function (e) {
+          if (!nav.classList.contains('open')) return;
+          if (e.target === btn) return;
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('open');
+            btn.classList.remove('open');
+          }
+        });
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); btn.classList.remove('open'); }));
+      }
+    });
+  </script>
 
 </body>
 

@@ -55,6 +55,20 @@
       animation: floatIn 0.8s ease-out;
     }
 
+    /* leave space for fixed header */
+    body { padding-top:72px; }
+
+    .nav-toggle {
+      display: none !important; /* hide on desktop */
+      background: transparent;
+      border: none;
+      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:1.25rem; cursor:pointer; transition: transform 180ms ease, background-color 180ms ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-toggle:hover { background: rgba(11,78,126,0.05); transform: scale(1.03); }
+    .nav-toggle.open { transform: rotate(90deg); }
+
     .logo {
       height: 65px;
     }
@@ -63,6 +77,7 @@
       display: flex;
       gap: 2rem;
       align-items: center;
+      margin-left: auto; /* keep desktop nav on the right */
     }
 
     nav a {
@@ -244,6 +259,11 @@
       header {
         padding: 1rem;
       }
+
+      /* mobile: show hamburger, collapse nav into dropdown */
+      .nav-toggle { display: inline-flex !important; }
+      nav { display: none; position: absolute; top: 64px; right: 1rem; background: white; flex-direction: column; gap: 0.6rem; padding: 0.8rem; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); width: calc(100% - 2rem); left: 1rem; }
+      nav.open { display: flex; }
     }
   </style>
 </head>
@@ -252,6 +272,7 @@
 
   <header>
     <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
+    <button class="nav-toggle" aria-label="Toggle menu"><span aria-hidden="true">☰</span></button>
     <nav>
       <a href="#how-it-works">How It Works</a>
       <a href="#contact-us">Contact Us</a>
@@ -358,7 +379,30 @@
     <p style="margin-top:1rem;">Call Anytime: 9512930353 | 24/7 Support</p>
     <p style="margin-top:1rem; opacity:0.7;"> 2025 Halo Home Investments Licensed & Insured</p>
   </footer>
+</footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('header nav');
+      if (btn && nav) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          nav.classList.toggle('open');
+          btn.classList.toggle('open');
+        });
+        document.addEventListener('click', function (e) {
+          if (!nav.classList.contains('open')) return;
+          if (e.target === btn) return;
+          if (!nav.contains(e.target)) {
+            nav.classList.remove('open');
+            btn.classList.remove('open');
+          }
+        });
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); btn.classList.remove('open'); }));
+      }
+    });
+  </script>
 </body>
 
 </html>
