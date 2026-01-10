@@ -103,36 +103,19 @@
     }
 
     .hero {
-      background-image: url('assets/hero-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
+      background: linear-gradient(135deg, #c0efff, var(--blue));
       text-align: center;
       padding: 14rem 1rem 8rem;
-      color: #ffffff;
+      color: var(--text);
       animation: floatIn 1s ease-out;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(6,24,40,0.45);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      pointer-events: none;
     }
 
     .hero h1 {
       font-size: 3.6rem;
       font-weight: 900;
       margin-bottom: 1rem;
-      color: #ffffff;
-      text-shadow: 0 6px 30px rgba(2,6,23,0.5);
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
       animation: floatIn 1.2s ease-out;
-      position: relative;
-      z-index: 2;
     }
 
     .hero p {
@@ -140,9 +123,6 @@
       max-width: 900px;
       margin: 0 auto 2rem;
       animation: floatIn 1.4s ease-out;
-      color: rgba(255,255,255,0.92);
-      position: relative;
-      z-index: 2;
     }
 
     .big-btn {
@@ -156,8 +136,6 @@
       box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
       display: inline-block;
       transition: 0.3s;
-      position: relative;
-      z-index: 3;
     }
 
     .big-btn:hover {
@@ -308,7 +286,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>We Buy Houses in Riverside County</h1>
+      <h1>We Buy Houses all over California!</h1>
       <p style="font-size:1.4rem; margin-bottom:2rem;">Any Condition • Cash • Close on Your Time</p>
       <p>No repairs. No agents. No fees. We handle everything.</p>
       <a href="#form" class="big-btn">Get Your Cash Offer </a>
