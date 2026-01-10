@@ -55,8 +55,19 @@
       animation: floatIn 0.8s ease-out;
     }
 
-    /* keep space for fixed header */
-    body { padding-top: 72px; }
+    /* leave space for fixed header */
+    body { padding-top:72px; }
+
+    .nav-toggle {
+      display: none !important; /* hide on desktop */
+      background: transparent;
+      border: none;
+      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:1.25rem; cursor:pointer; transition: transform 180ms ease, background-color 180ms ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-toggle:hover { background: rgba(11,78,126,0.05); transform: scale(1.03); }
+    .nav-toggle.open { transform: rotate(90deg); }
 
     .logo {
       height: 65px;
@@ -68,17 +79,6 @@
       align-items: center;
       margin-left: auto; /* keep desktop nav on the right */
     }
-
-    .nav-toggle {
-      display: none !important; /* hidden on desktop */
-      background: transparent;
-      border: none;
-      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
-      font-size:1.25rem; cursor:pointer; transition: transform 180ms ease, background-color 180ms ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .nav-toggle:hover { background: rgba(11,78,126,0.05); transform: scale(1.03); }
-    .nav-toggle.open { transform: rotate(90deg); }
 
     nav a {
       color: var(--text);
@@ -103,19 +103,36 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, #c0efff, var(--blue));
+      background-image: url('assets/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
       text-align: center;
       padding: 14rem 1rem 8rem;
-      color: var(--text);
+      color: #ffffff;
       animation: floatIn 1s ease-out;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(6,24,40,0.45);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      pointer-events: none;
     }
 
     .hero h1 {
       font-size: 3.6rem;
       font-weight: 900;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+      text-shadow: 0 6px 30px rgba(2,6,23,0.5);
       animation: floatIn 1.2s ease-out;
+      position: relative;
+      z-index: 2;
     }
 
     .hero p {
@@ -123,6 +140,9 @@
       max-width: 900px;
       margin: 0 auto 2rem;
       animation: floatIn 1.4s ease-out;
+      color: rgba(255,255,255,0.92);
+      position: relative;
+      z-index: 2;
     }
 
     .big-btn {
@@ -136,6 +156,8 @@
       box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
       display: inline-block;
       transition: 0.3s;
+      position: relative;
+      z-index: 3;
     }
 
     .big-btn:hover {
@@ -257,19 +279,16 @@
       }
 
       header {
-        padding: 0.75rem 1rem;
+        padding: 1rem;
       }
 
-      /* show hamburger and collapse nav */
+      /* mobile: show hamburger, collapse nav into dropdown */
       .nav-toggle { display: inline-flex !important; }
       nav { display: none; position: absolute; top: 64px; right: 1rem; background: white; flex-direction: column; gap: 0.6rem; padding: 0.8rem; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); width: calc(100% - 2rem); left: 1rem; }
       nav.open { display: flex; }
 
-      .hero { padding: 8rem 1rem 4rem; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1.1rem; }
-      .big-btn { padding: 1rem 2rem; font-size: 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; }
+      /* use a smaller background on mobile when available to save bandwidth */
+      .hero { background-image: url('assets/hero-bg-mobile.jpg'); background-position: center top; }
     }
   </style>
 </head>
@@ -277,9 +296,7 @@
 <body>
 
   <header>
-    <a href="#" style="display:flex; align-items:center; gap:0.6rem; text-decoration:none;">
-      <h2 style="color:var(--darkblue); font-size:1.4rem; margin:0;">Halo Home Investments</h2>
-    </a>
+    <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
     <button class="nav-toggle" aria-label="Toggle menu"><span aria-hidden="true">☰</span></button>
     <nav>
       <a href="#how-it-works">How It Works</a>
@@ -295,7 +312,7 @@
       <p style="font-size:1.4rem; margin-bottom:2rem;">Any Condition • Cash • Close on Your Time</p>
       <p>No repairs. No agents. No fees. We handle everything.</p>
       <a href="#form" class="big-btn">Get Your Cash Offer </a>
-      <p style="margin-top:2rem; font-size:1.3rem; font-weight:700;"> 9512930353</p>
+      <p style="margin-top:2rem; font-size:1.3rem; font-weight:700;"> (951) 293-0353</p>
     </div>
   </section>
 
@@ -350,7 +367,7 @@
     <div class="container">
       <h2 style="font-size:2.8rem; margin-bottom:2rem;">Get in Touch</h2>
       <p style="font-size:1.3rem; margin-bottom:2rem;">Have questions? We're here to help.</p>
-      <p style="font-size:1.6rem; font-weight:700; color:var(--darkblue);">📞 Call or Text: 9512930353</p>
+      <p style="font-size:1.6rem; font-weight:700; color:var(--darkblue);">📞 Call or Text: (951) 293-0353</p>
       <p style="font-size:1.2rem; margin-top:1.5rem;">Available 24/7 • We answer all calls</p>
     </div>
   </section>
@@ -384,9 +401,10 @@
 
   <footer>
     <p><strong>We Buy Houses in Riverside County & Surrounding Areas</strong></p>
-    <p style="margin-top:1rem;">Call Anytime: 9512930353 | 24/7 Support</p>
+    <p style="margin-top:1rem;">Call Anytime: (951) 293-0353 | 24/7 Support</p>
     <p style="margin-top:1rem; opacity:0.7;"> 2025 Halo Home Investments Licensed & Insured</p>
   </footer>
+</footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -410,7 +428,6 @@
       }
     });
   </script>
-
 </body>
 
 </html>
