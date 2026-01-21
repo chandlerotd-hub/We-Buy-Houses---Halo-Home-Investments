@@ -169,6 +169,7 @@ nav a:hover {
   padding: 6rem 1rem;
   text-align: center;
   animation: floatIn 1s ease-out;
+  background: #a8e6ff !important;
 }
 
 .benefits {
@@ -179,7 +180,7 @@ nav a:hover {
 }
 
 .benefit {
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   padding: 3rem 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
