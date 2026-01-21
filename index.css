@@ -12,7 +12,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #a8e6ff !important;
+  background: #b3e0ff;
   color: var(--text);
   line-height: 1.6;
   padding-top: 72px;
@@ -103,7 +103,6 @@ nav a:hover {
 }
 
 .hero {
-  background-image: url('assets/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -169,7 +168,6 @@ nav a:hover {
   padding: 6rem 1rem;
   text-align: center;
   animation: floatIn 1s ease-out;
-  background: #a8e6ff !important;
 }
 
 .benefits {
@@ -180,7 +178,7 @@ nav a:hover {
 }
 
 .benefit {
-  background: rgba(255, 255, 255, 0.7);
+  background: white;
   padding: 3rem 2rem;
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -214,6 +212,7 @@ nav a:hover {
   margin: 4rem auto;
   max-width: 900px;
   animation: floatIn 1.4s ease-out;
+  border: 3px solid #6bc8ff;
 }
 
 .seller-form h2 {
