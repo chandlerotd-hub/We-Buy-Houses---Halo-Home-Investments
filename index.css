@@ -103,9 +103,7 @@ nav a:hover {
 }
 
 .hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #b3e0ff;
   position: relative;
   text-align: center;
   padding: 14rem 1rem 8rem;
@@ -118,9 +116,7 @@ nav a:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(6, 24, 40, 0.45);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -196,7 +192,7 @@ nav a:hover {
 }
 
 .bg-light {
-  background: #a8e6ff !important;
+  background: #b3e0ff;
 }
 
 .container {
