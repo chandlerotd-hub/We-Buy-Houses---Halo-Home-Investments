@@ -1,513 +1,397 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>We Buy Houses Riverside County | Fast Cash Offer</title>
-  <meta name="description"
-    content="Sell your house fast in Riverside County. Any condition, cash offer in 24 hrs. No fees, no repairs.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #a8e6ff;
-      --darkblue: #6bc8ff;
-      --text: #1e1e1e;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f0fbff;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    @keyframes floatIn {
-      from {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header {
-      background: white;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      animation: floatIn 0.8s ease-out;
-    }
-
-    /* leave space for fixed header */
-    body { padding-top:72px; }
-
-    .nav-toggle {
-      display: none !important; /* hide on desktop */
-      background: transparent;
-      border: none;
-      width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
-      font-size:1.25rem; cursor:pointer; transition: transform 180ms ease, background-color 180ms ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .nav-toggle:hover { background: rgba(11,78,126,0.05); transform: scale(1.03); }
-    .nav-toggle.open { transform: rotate(90deg); }
-
-    .logo {
-      height: 65px;
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      margin-left: auto; /* keep desktop nav on the right */
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--darkblue);
-    }
-
-    .nav-btn {
-      background: #ff6b6b;
-      color: white !important;
-      padding: 0.8rem 1.8rem;
-      border-radius: 25px;
-    }
-
-    .nav-btn:hover {
-      background: #e55555;
-    }
-
-    .hero {
-      background-image: url('assets/hero-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-      text-align: center;
-      padding: 14rem 1rem 8rem;
-      color: #ffffff;
-      animation: floatIn 1s ease-out;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(6,24,40,0.45);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      pointer-events: none;
-    }
-
-    .hero h1 {
-      font-size: 3.6rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      color: #ffffff;
-      text-shadow: 0 6px 30px rgba(2,6,23,0.5);
-      animation: floatIn 1.2s ease-out;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero p {
-      font-size: 1.6rem;
-      max-width: 900px;
-      margin: 0 auto 2rem;
-      animation: floatIn 1.4s ease-out;
-      color: rgba(255,255,255,0.92);
-      position: relative;
-      z-index: 2;
-    }
-
-    .big-btn {
-      background: #ff6b6b;
-      color: white;
-      padding: 1.6rem 4rem;
-      font-size: 1.7rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-      display: inline-block;
-      transition: 0.3s;
-      position: relative;
-      z-index: 3;
-    }
-
-    .big-btn:hover {
-      transform: scale(1.05);
-    }
-
-    .section {
-      padding: 6rem 1rem;
-      text-align: center;
-      animation: floatIn 1s ease-out;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      margin-top: 3rem;
-    }
-
-    .benefit {
-      background: white;
-      padding: 3rem 2rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      animation: floatIn 1.2s ease-out;
-    }
-
-    .benefit h3 {
-      font-size: 1.8rem;
-      color: var(--darkblue);
-      margin-bottom: 0.8rem;
-    }
-
-    .benefit p {
-      font-size: 1.1rem;
-    }
-
-    .bg-light {
-      background: #f8f9fa;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .seller-form {
-      background: linear-gradient(135deg, var(--blue), #b3e0ff);
-      padding: 5rem 2rem;
-      border-radius: 20px;
-      margin: 4rem auto;
-      max-width: 900px;
-      animation: floatIn 1.4s ease-out;
-    }
-
-    .seller-form h2 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .seller-form p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    input,
-    select {
-      width: 100%;
-      padding: 1.4rem;
-      border-radius: 10px;
-      border: none;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .submit-btn {
-      background: #ff6b6b;
-      color: white;
-      padding: 1.8rem;
-      font-size: 1.6rem;
-      font-weight: 700;
-      cursor: pointer;
-      grid-column: 1/-1;
-      border-radius: 50px;
-      border: none;
-      transition: 0.3s;
-    }
-
-    .submit-btn:hover {
-      transform: scale(1.02);
-    }
-
-    footer {
-      background: #1e1e1e;
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 1.1rem;
-    }
-
-    @media (max-width:768px) {
-      body { padding-top: 64px; }
-
-      header { padding: 0.75rem 1rem; height: 64px; }
-
-      .hero {
-        padding: 8rem 1rem 4rem;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .big-btn {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        width: 100%;
-        max-width: 400px;
-        box-sizing: border-box;
-      }
-
-      .section { padding: 4rem 1rem; }
-
-      .benefits { gap: 2rem; }
-
-      .benefit {
-        padding: 2rem 1.5rem;
-      }
-
-      .benefit h3 { font-size: 1.25rem; }
-
-      .seller-form {
-        padding: 3rem 1.5rem;
-        margin: 2rem auto;
-        border-radius: 15px;
-      }
-
-      .seller-form h2 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-      }
-
-      .seller-form p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        row-gap: 1.5rem;
-      }
-
-      input, select {
-        padding: 1.2rem;
-        font-size: 1rem;
-        min-height: 48px;
-      }
-
-      .submit-btn {
-        padding: 1.5rem 1rem;
-        font-size: 1.2rem;
-        min-height: 48px;
-        margin-top: 1.5rem;
-      }
-
-      .container { padding: 0 1rem; }
-
-      /* mobile: show hamburger, collapse nav into dropdown */
-      .nav-toggle { display: inline-flex !important; min-height: 44px; min-width: 44px; }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 64px;
-        right: 1rem;
-        left: 1rem;
-        background: white;
-        flex-direction: column;
-        gap: 0.8rem;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        width: calc(100% - 2rem);
-        z-index: 999;
-      }
-
-      nav a {
-        padding: 0.75rem 0;
-        font-size: 1.05rem;
-      }
-
-      nav.open { display: flex; }
-
-      footer {
-        padding: 2rem 1rem;
-        font-size: 0.95rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <h2 style="color:var(--darkblue); font-size:1.4rem;">Halo Home Investments</h2>
-    <button class="nav-toggle" aria-label="Toggle menu"><span aria-hidden="true">☰</span></button>
-    <nav>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#contact-us">Contact Us</a>
-      <a href="#form" class="nav-btn">Get Your Cash Offer</a>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1>We Buy Houses in Riverside County</h1>
-      <p style="font-size:1.4rem; margin-bottom:2rem;">Any Condition • Cash • Close on Your Time</p>
-      <p>No repairs. No agents. No fees. We handle everything.</p>
-      <a href="#form" class="big-btn">Get Your Cash Offer </a>
-      <p style="margin-top:2rem; font-size:1.3rem; font-weight:700;"> (951) 293-0353</p>
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="section">
-    <div class="container">
-      <h2 style="font-size:2.8rem; margin-bottom:1rem;">Why Choose Us?</h2>
-      <div class="benefits">
-        <div class="benefit">
-          <h3> No Repairs</h3>
-          <p>We buy as-is. Broken foundation? Water damage? We don't care.</p>
-        </div>
-        <div class="benefit">
-          <h3> Close on Your Terms</h3>
-          <p>Pick your closing date whenever you're ready.</p>
-        </div>
-        <div class="benefit">
-          <h3> Zero Fees</h3>
-          <p>No realtor commissions. No closing costs. Ever.</p>
-        </div>
-        <div class="benefit">
-          <h3> We Handle It All</h3>
-          <p>Inherited property? Behind on taxes? Divorce? We've got you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section bg-light" id="how-it-works">
-    <div class="container">
-      <h2 style="font-size:2.8rem; margin-bottom:3rem;">How It Works</h2>
-      <div class="benefits">
-        <div class="benefit">
-          <h3>1️⃣ Tell Us About Your Home</h3>
-          <p>Share your property details in our quick form. Takes just 2 minutes.</p>
-        </div>
-        <div class="benefit">
-          <h3>2️⃣ Get Your Cash Offer</h3>
-          <p>We'll review your info and send you a fair cash offer within 24 hours.</p>
-        </div>
-        <div class="benefit">
-          <h3>3️⃣ Close on Your Timeline</h3>
-          <p>Pick your closing date and we handle all the paperwork. It's that simple.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT US -->
-  <section class="section" id="contact-us">
-    <div class="container">
-      <h2 style="font-size:2.8rem; margin-bottom:2rem;">Get in Touch</h2>
-      <p style="font-size:1.3rem; margin-bottom:2rem;">Have questions? We're here to help.</p>
-      <p style="font-size:1.6rem; font-weight:700; color:var(--darkblue);">📞 Call or Text: (951) 293-0353</p>
-      <p style="font-size:1.2rem; margin-top:1.5rem;">Available 24/7 • We answer all calls</p>
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <section class="section" id="form">
-    <div class="container">
-      <div class="seller-form">
-        <h2>Get Your No-Obligation Cash Offer Today</h2>
-        <p>Fill out the form below or call us anytime</p>
-        <form method="POST" action="https://formspree.io/f/xnnezveb">
-          <div class="form-grid">
-            <input type="text" name="name" placeholder="Your Full Name" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <input type="email" name="email" placeholder="Email (optional)">
-            <input type="text" name="address" placeholder="Property Address" required>
-            <input type="text" name="city" placeholder="City & Zip" required>
-            <select name="situation" required>
-              <option value="" disabled selected>How soon do you need to sell?</option>
-              <option>ASAP</option>
-              <option>30-60 days</option>
-              <option>60-90 days</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <button type="submit" class="submit-btn">Send Me My Offer </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p><strong>We Buy Houses in Riverside County & Surrounding Areas</strong></p>
-    <p style="margin-top:1rem;">Call Anytime: (951) 293-0353 | 24/7 Support</p>
-    <p style="margin-top:1rem; opacity:0.7;"> 2025 Halo Home Investments Licensed & Insured</p>
-  </footer>
-</footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const btn = document.querySelector('.nav-toggle');
-      const nav = document.querySelector('header nav');
-      if (btn && nav) {
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          nav.classList.toggle('open');
-          btn.classList.toggle('open');
-        });
-        document.addEventListener('click', function (e) {
-          if (!nav.classList.contains('open')) return;
-          if (e.target === btn) return;
-          if (!nav.contains(e.target)) {
-            nav.classList.remove('open');
-            btn.classList.remove('open');
-          }
-        });
-        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); btn.classList.remove('open'); }));
-      }
-    });
-  </script>
-</body>
-
-</html>
+:root {
+  --blue: #a8e6ff;
+  --darkblue: #6bc8ff;
+  --text: #1e1e1e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f0fbff;
+  color: var(--text);
+  line-height: 1.6;
+  padding-top: 72px;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header {
+  background: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: floatIn 0.8s ease-out;
+}
+
+.nav-toggle {
+  display: none !important;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.nav-toggle:hover {
+  background: rgba(11, 78, 126, 0.05);
+  transform: scale(1.03);
+}
+
+.nav-toggle.open {
+  transform: rotate(90deg);
+}
+
+.logo {
+  height: 65px;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--darkblue);
+}
+
+.nav-btn {
+  background: #ff6b6b;
+  color: white !important;
+  padding: 0.8rem 1.8rem;
+  border-radius: 25px;
+}
+
+.nav-btn:hover {
+  background: #e55555;
+}
+
+.hero {
+  background-image: url('assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-align: center;
+  padding: 14rem 1rem 8rem;
+  color: #ffffff;
+  animation: floatIn 1s ease-out;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 24, 40, 0.45);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 3.6rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 6px 30px rgba(2, 6, 23, 0.5);
+  animation: floatIn 1.2s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.hero p {
+  font-size: 1.6rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  animation: floatIn 1.4s ease-out;
+  color: rgba(255, 255, 255, 0.92);
+  position: relative;
+  z-index: 2;
+}
+
+.big-btn {
+  background: #ff6b6b;
+  color: white;
+  padding: 1.6rem 4rem;
+  font-size: 1.7rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+  display: inline-block;
+  transition: 0.3s;
+  position: relative;
+  z-index: 3;
+}
+
+.big-btn:hover {
+  transform: scale(1.05);
+}
+
+.section {
+  padding: 6rem 1rem;
+  text-align: center;
+  animation: floatIn 1s ease-out;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.benefit {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  animation: floatIn 1.2s ease-out;
+}
+
+.benefit h3 {
+  font-size: 1.8rem;
+  color: var(--darkblue);
+  margin-bottom: 0.8rem;
+}
+
+.benefit p {
+  font-size: 1.1rem;
+}
+
+.bg-light {
+  background: #f0fbff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.seller-form {
+  background: linear-gradient(135deg, var(--blue), #b3e0ff);
+  padding: 5rem 2rem;
+  border-radius: 20px;
+  margin: 4rem auto;
+  max-width: 900px;
+  animation: floatIn 1.4s ease-out;
+}
+
+.seller-form h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.seller-form p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.submit-btn {
+  background: #ff6b6b;
+  color: white;
+  padding: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  grid-column: 1/-1;
+  border-radius: 50px;
+  border: none;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.02);
+}
+
+footer {
+  background: #1e1e1e;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 64px;
+  }
+
+  header {
+    padding: 0.75rem 1rem;
+    height: 64px;
+  }
+
+  .hero {
+    padding: 8rem 1rem 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .big-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+
+  .section {
+    padding: 4rem 1rem;
+  }
+
+  .benefits {
+    gap: 2rem;
+  }
+
+  .benefit {
+    padding: 2rem 1.5rem;
+  }
+
+  .benefit h3 {
+    font-size: 1.25rem;
+  }
+
+  .seller-form {
+    padding: 2rem 1rem;
+    margin: 2rem auto;
+    border-radius: 15px;
+    max-width: 95%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .seller-form h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .seller-form p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    row-gap: 1.5rem;
+    width: 100%;
+  }
+
+  input,
+  select {
+    padding: 1.2rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .submit-btn {
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+    min-height: 48px;
+    margin-top: 1.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex !important;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 1rem;
+    left: 1rem;
+    background: white;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    width: calc(100% - 2rem);
+    z-index: 999;
+  }
+
+  nav a {
+    padding: 0.75rem 0;
+    font-size: 1.05rem;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  footer {
+    padding: 2rem 1rem;
+    font-size: 0.95rem;
+  }
+}
