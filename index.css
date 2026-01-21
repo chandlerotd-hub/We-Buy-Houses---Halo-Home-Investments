@@ -12,7 +12,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f0fbff !important;
+  background: #a8e6ff !important;
   color: var(--text);
   line-height: 1.6;
   padding-top: 72px;
@@ -197,7 +197,7 @@ nav a:hover {
 }
 
 .bg-light {
-  background: #f0fbff;
+  background: #a8e6ff !important;
 }
 
 .container {
